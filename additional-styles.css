@@ -1,0 +1,578 @@
+/* ==========================================
+   ADDITIONAL STYLES FOR MISSING SCREENS
+   Matches the native design for all screens
+   ========================================== */
+
+/* ==========================================
+   COMPACT LAYOUT (NOT PHONE FRAME)
+   ========================================== */
+
+@media (min-width: 769px) {
+    body {
+        background: var(--bg-dark);
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+    
+    #app {
+        max-width: 480px;
+        width: 100%;
+        min-height: 100vh;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ==========================================
+   QURAN INDEX - Beautiful Styling
+   ========================================== */
+
+.surah-list {
+    padding: 0 1.5rem 100px;
+}
+
+.surah-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.surah-item:active {
+    transform: scale(0.98);
+    border-color: var(--primary);
+}
+
+.surah-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.surah-info span:first-child {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.surah-info span:last-child {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   QURAN READER - Beautiful Styling
+   ========================================== */
+
+.reader-header {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--bg-elevated);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reader-header button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#current-surah {
+    flex: 1;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.quran-controls {
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--bg-elevated);
+}
+
+.quran-controls label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.quran-controls select {
+    padding: 0.5rem 1rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--bg-elevated);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.quran-controls button {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.quran-text {
+    padding: 2rem 1.5rem 120px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.verse {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+}
+
+.verse-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1.75rem;
+    line-height: 2.5;
+    text-align: right;
+    direction: rtl;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.verse-translation {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    padding-top: 1rem;
+    border-top: 1px solid var(--bg-elevated);
+}
+
+.reader-controls {
+    position: fixed;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
+    border-top: 1px solid var(--bg-elevated);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    z-index: 50;
+}
+
+.reader-controls button {
+    flex: 1;
+    padding: 0.875rem;
+    background: var(--bg-elevated);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.reader-controls button:active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--bg-dark);
+}
+
+/* ==========================================
+   GROUPS SCREEN - Beautiful Styling
+   ========================================== */
+
+.groups-list {
+    padding: 0 1.5rem 100px;
+}
+
+.group-item {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.group-item:active {
+    transform: scale(0.98);
+    border-color: var(--primary);
+}
+
+.group-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.group-item p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.group-item button {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--bg-elevated);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.group-item button:active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--bg-dark);
+}
+
+/* ==========================================
+   COMPETITIONS SCREEN - Beautiful Styling
+   ========================================== */
+
+.competitions-list {
+    padding: 0 1.5rem 100px;
+}
+
+.competition-item {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.competition-item:active {
+    transform: scale(0.98);
+    border-color: var(--primary);
+}
+
+.competition-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.competition-item .competition-meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.competition-progress {
+    width: 100%;
+    height: 6px;
+    background: var(--bg-elevated);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.competition-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.6s ease;
+}
+
+/* ==========================================
+   MESSAGES - Fix Layout
+   ========================================== */
+
+.messages-container {
+    display: flex;
+    height: calc(100vh - 60px - 70px);
+    max-height: calc(100vh - 130px);
+    overflow: hidden;
+}
+
+.conversations-list {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.chat-view {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+}
+
+@media (min-width: 769px) {
+    .messages-container {
+        height: calc(100vh - 60px - 70px);
+    }
+    
+    .chat-view {
+        display: flex;
+        flex: 2;
+        border-left: 1px solid var(--bg-elevated);
+    }
+}
+
+@media (max-width: 768px) {
+    .chat-view.active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 200;
+        background: var(--bg-dark);
+    }
+    
+    .conversations-list.hidden {
+        display: none;
+    }
+    
+    .back-btn-mobile {
+        display: flex !important;
+    }
+}
+
+/* ==========================================
+   FEED - Beautiful Styling
+   ========================================== */
+
+.feed-container {
+    padding: 0 1.5rem 100px;
+}
+
+.feed-item {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+}
+
+.user-info {
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+}
+
+.feed-item p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.reactions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.reaction-btn {
+    padding: 0.5rem 1rem;
+    background: var(--bg-elevated);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.reaction-btn:active {
+    background: var(--primary);
+    color: var(--bg-dark);
+}
+
+/* ==========================================
+   PRAYER CALENDAR - Beautiful Styling
+   ========================================== */
+
+.prayer-times {
+    padding: 1.5rem;
+}
+
+.prayer-time-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+}
+
+.prayer-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.prayer-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ==========================================
+   BOTTOM NAV - Proper Fit
+   ========================================== */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    height: 70px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--bg-elevated);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ==========================================
+   SCREEN CONTAINER - Proper Padding
+   ========================================== */
+
+.screen-container {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 80px;
+}
+
+/* ==========================================
+   ALL BUTTONS - Consistent Styling
+   ========================================== */
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--bg-dark);
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.btn-secondary:active {
+    background: var(--surface);
+}
+
+/* ==========================================
+   SCREEN HEADERS - Consistent
+   ========================================== */
+
+.screen-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg-dark);
+    z-index: 50;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.screen-header h2 {
+    flex: 1;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.back-btn:active {
+    background: var(--surface);
+}
+
+/* ==========================================
+   MODE SELECTION - Quran Screen
+   ========================================== */
+
+.mode-selection {
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.mode-selection button {
+    flex: 1;
+}

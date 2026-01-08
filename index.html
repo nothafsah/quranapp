@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Qur'an Companion</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/additional-styles.css">
+    <link rel="stylesheet" href="css/complete-styling.css">
+    <link rel="stylesheet" href="css/final-fixes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- App Container -->
+    <div id="app">
+        
+        <!-- SPLASH SCREEN with Animation -->
+        <div id="splash-screen" class="screen active">
+            <div class="splash-background"></div>
+            <div class="splash-content">
+                <div class="splash-logo">
+                    <div class="logo-circle">
+                        <span class="logo-icon">📖</span>
+                    </div>
+                </div>
+                <h1 class="app-title fade-in">Qur'an Companion</h1>
+                <p class="app-subtitle fade-in-delay">Your spiritual journey awaits</p>
+                <div class="splash-loader">
+                    <div class="loader-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WELCOME SCREEN -->
+        <div id="welcome-screen" class="screen">
+            <div class="welcome-container">
+                <div class="welcome-content">
+                    <div class="welcome-logo">
+                        <span class="logo-xl">📖</span>
+                    </div>
+                    <h1>Welcome to<br>Qur'an Companion</h1>
+                    <p class="welcome-text">Build consistency in reading the Qur'an with our intelligent tracking and gamification system</p>
+                    
+                    <div class="welcome-features">
+                        <div class="feature-badge">
+                            <span class="feature-emoji">🎯</span>
+                            <span>Focus Mode</span>
+                        </div>
+                        <div class="feature-badge">
+                            <span class="feature-emoji">📊</span>
+                            <span>Track Progress</span>
+                        </div>
+                        <div class="feature-badge">
+                            <span class="feature-emoji">🏆</span>
+                            <span>Earn Hasanat</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="welcome-actions">
+                    <button class="btn-primary btn-large" onclick="showScreen('login-screen')">
+                        <span>Get Started</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <p class="welcome-footer">Join 50,000+ Muslims worldwide</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOGIN SCREEN -->
+        <div id="login-screen" class="screen">
+            <div class="auth-container">
+                <button class="back-btn" onclick="showScreen('welcome-screen')">
+                    <span>←</span>
+                </button>
+                
+                <div class="auth-content">
+                    <div class="auth-logo">📖</div>
+                    <h2>Welcome Back</h2>
+                    <p class="auth-subtitle">Continue your spiritual journey</p>
+                    
+                    <form class="auth-form" onsubmit="handleLogin(event)">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="login-email" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-full">
+                            <span>Login</span>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <button class="btn-secondary btn-full" onclick="showScreen('signup-screen')">
+                        Create Account
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIGNUP SCREEN -->
+        <div id="signup-screen" class="screen">
+            <div class="auth-container">
+                <button class="back-btn" onclick="showScreen('login-screen')">
+                    <span>←</span>
+                </button>
+                
+                <div class="auth-content">
+                    <div class="auth-logo">📖</div>
+                    <h2>Create Account</h2>
+                    <p class="auth-subtitle">Begin your Qur'an journey</p>
+                    
+                    <form class="auth-form" onsubmit="handleSignup(event)">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="signup-name" placeholder="Ahmed Khan" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="signup-email" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" id="signup-password" placeholder="••••••••" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-full">
+                            <span>Create Account</span>
+                        </button>
+                    </form>
+                    
+                    <p class="auth-footer">
+                        Already have an account? 
+                        <a href="#" onclick="showScreen('login-screen'); return false;">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONBOARDING SCREEN -->
+        <div id="onboarding-screen" class="screen">
+            <div class="onboarding-container">
+                <div class="progress-dots">
+                    <span class="dot active" data-step="1"></span>
+                    <span class="dot" data-step="2"></span>
+                    <span class="dot" data-step="3"></span>
+                </div>
+                
+                <!-- Step 1 -->
+                <div id="onboarding-step-1" class="onboarding-step active">
+                    <div class="step-content">
+                        <div class="step-icon">📚</div>
+                        <h2>What's your Qur'an<br>reading level?</h2>
+                        <p class="step-subtitle">This helps us personalize your experience</p>
+                        
+                        <div class="option-cards">
+                            <div class="option-card" onclick="selectProficiency('beginner')">
+                                <div class="option-icon">🌱</div>
+                                <div class="option-title">Beginner</div>
+                                <div class="option-desc">Just starting my journey</div>
+                            </div>
+                            
+                            <div class="option-card" onclick="selectProficiency('intermediate')">
+                                <div class="option-icon">📖</div>
+                                <div class="option-title">Intermediate</div>
+                                <div class="option-desc">I read regularly</div>
+                            </div>
+                            
+                            <div class="option-card" onclick="selectProficiency('advanced')">
+                                <div class="option-icon">⭐</div>
+                                <div class="option-title">Advanced</div>
+                                <div class="option-desc">I read daily</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div id="onboarding-step-2" class="onboarding-step">
+                    <div class="step-content">
+                        <div class="step-icon">⏰</div>
+                        <h2>How much time can you<br>dedicate daily?</h2>
+                        <p class="step-subtitle">Set a realistic goal</p>
+                        
+                        <div class="option-cards">
+                            <div class="option-card" onclick="selectTime('5')">
+                                <div class="option-title">5 minutes</div>
+                                <div class="option-desc">About 1 page</div>
+                            </div>
+                            
+                            <div class="option-card" onclick="selectTime('15')">
+                                <div class="option-title">15 minutes</div>
+                                <div class="option-desc">About 3-4 pages</div>
+                            </div>
+                            
+                            <div class="option-card" onclick="selectTime('30')">
+                                <div class="option-title">30 minutes</div>
+                                <div class="option-desc">About half a juz</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div id="onboarding-step-3" class="onboarding-step">
+                    <div class="step-content">
+                        <div class="step-icon">🎯</div>
+                        <h2>Set your daily<br>goal</h2>
+                        <p class="step-subtitle">How many pages per day?</p>
+                        
+                        <div class="goal-selector">
+                            <button class="goal-btn" onclick="adjustGoal(-1)">−</button>
+                            <div class="goal-display">
+                                <span class="goal-number" id="goal-pages">2</span>
+                                <span class="goal-label">pages</span>
+                            </div>
+                            <button class="goal-btn" onclick="adjustGoal(1)">+</button>
+                        </div>
+                        
+                        <button class="btn-primary btn-full btn-large" onclick="completeOnboarding()">
+                            <span>Start My Journey</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOME DASHBOARD -->
+        <div id="home-dashboard" class="screen">
+            <div class="screen-container">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="status-time" id="status-time">9:41</div>
+                    <div class="status-icons">
+                        <span>📶</span>
+                        <span>🔋</span>
+                    </div>
+                </div>
+                
+                <!-- Header -->
+                <div class="app-header">
+                    <div class="header-left">
+                        <h1 class="header-greeting">As-salamu alaykum,<br><span id="user-name">Ahmed</span></h1>
+                    </div>
+                    <div class="header-right">
+                        <button class="icon-btn" onclick="showScreen('notifications-screen')">
+                            <span class="notification-badge">3</span>
+                            🔔
+                        </button>
+                        <button class="icon-btn" onclick="showScreen('profile-screen')">
+                            👤
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Hasanat Card -->
+                <div class="hasanat-card-big">
+                    <div class="hasanat-glow"></div>
+                    <div class="hasanat-content">
+                        <div class="hasanat-label">Today's Hasanat</div>
+                        <div class="hasanat-value" id="hasanat-today">1,250</div>
+                        <div class="hasanat-sub">
+                            <span class="hasanat-total">Total: <span id="hasanat-total">42,500</span></span>
+                            <span class="hasanat-streak">🔥 <span id="streak-days">15</span> day streak</span>
+                        </div>
+                    </div>
+                    <div class="hasanat-progress">
+                        <div class="progress-bar-mini">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <span class="progress-text">Daily goal: 65%</span>
+                    </div>
+                </div>
+                
+                
+                <!-- Prayer Times Card -->
+                <div class="prayer-card" onclick="showScreen('prayer-calendar')">
+                    <div class="prayer-card-header">
+                        <div>
+                            <div class="hijri-date">12 Rajab 1448</div>
+                            <div class="location">📍 Abuja, Nigeria</div>
+                        </div>
+                        <div class="next-prayer">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">Next Prayer</div>
+                            <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary);">Asr in 2h 15m</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="action-card primary" onclick="showScreen('reader-view')">
+                        <span class="action-icon">📖</span>
+                        <span class="action-label">Continue Reading</span>
+                        <span class="action-detail">Surah Al-Baqarah • 2:45</span>
+                    </button>
+                    
+                    <button class="action-card" onclick="showScreen('focus-session')">
+                        <span class="action-icon">🎯</span>
+                        <span class="action-label">Focus Mode</span>
+                    </button>
+                    
+                    <button class="action-card" onclick="showScreen('quran-index')">
+                        <span class="action-icon">📚</span>
+                        <span class="action-label">Browse Qur'an</span>
+                    </button>
+                </div>
+                
+                <!-- Today's Section -->
+                <div class="section-header">
+                    <h3>Today's Activity</h3>
+                    <button class="text-btn" onclick="showScreen('analytics-screen')">See All →</button>
+                </div>
+                
+                <div class="activity-cards">
+                    <div class="activity-card">
+                        <div class="activity-icon">📖</div>
+                        <div class="activity-info">
+                            <div class="activity-value">12 pages</div>
+                            <div class="activity-label">Read Today</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <div class="activity-icon">⏱️</div>
+                        <div class="activity-info">
+                            <div class="activity-value">45 min</div>
+                            <div class="activity-label">Time Spent</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-card">
+                        <div class="activity-icon">🏆</div>
+                        <div class="activity-info">
+                            <div class="activity-value">Top 5%</div>
+                            <div class="activity-label">This Week</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MESSAGES SCREEN -->
+        <div id="messages-screen" class="screen">
+            <div class="screen-container">
+                <div class="screen-header">
+                    <h2>Messages</h2>
+                    <button class="icon-btn">✏️</button>
+                </div>
+                
+                <div class="messages-container">
+                    <div class="conversations-list">
+                        <div class="conversation-item" onclick="openChat('Fatima Ahmed')">
+                            <div class="avatar">FA</div>
+                            <div class="conversation-info">
+                                <div class="conversation-header">
+                                    <span class="conversation-name">Fatima Ahmed</span>
+                                    <span class="conversation-time">2m</span>
+                                </div>
+                                <div class="conversation-preview">Assalamu Alaikum! How's your Quran reading...</div>
+                            </div>
+                            <div class="unread-badge">2</div>
+                        </div>
+                        
+                        <div class="conversation-item" onclick="openChat('Omar Hassan')">
+                            <div class="avatar">OH</div>
+                            <div class="conversation-info">
+                                <div class="conversation-header">
+                                    <span class="conversation-name">Omar Hassan</span>
+                                    <span class="conversation-time">1h</span>
+                                </div>
+                                <div class="conversation-preview">MashaAllah, great progress this week!</div>
+                            </div>
+                        </div>
+                        
+                        <div class="conversation-item" onclick="openChat('Aisha Khan')">
+                            <div class="avatar">AK</div>
+                            <div class="conversation-info">
+                                <div class="conversation-header">
+                                    <span class="conversation-name">Aisha Khan</span>
+                                    <span class="conversation-time">3h</span>
+                                </div>
+                                <div class="conversation-preview">Let's start a new reading challenge together</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat View (Hidden on Mobile) -->
+                    <div class="chat-view" id="chat-view">
+                        <div class="chat-header">
+                            <button class="back-btn-mobile" onclick="closeChat()">←</button>
+                            <div class="avatar-small">FA</div>
+                            <div class="chat-user-info">
+                                <div class="chat-user-name" id="chat-user-name">Fatima Ahmed</div>
+                                <div class="chat-user-status">Online</div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message-group received">
+                                <div class="message">
+                                    <div class="message-bubble">Assalamu Alaikum! How's your Quran reading going?</div>
+                                    <div class="message-time">2:30 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message-group sent">
+                                <div class="message">
+                                    <div class="message-bubble">Wa Alaikum Assalam! Alhamdulillah, I'm on Surah Al-Imran now.</div>
+                                    <div class="message-time">2:32 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message-group received">
+                                <div class="message">
+                                    <div class="message-bubble">MashaAllah! Let's keep each other motivated! 💪</div>
+                                    <div class="message-time">2:35 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input-container">
+                            <input type="text" class="chat-input" placeholder="Type a message..." id="message-input">
+                            <button class="send-btn" onclick="sendMessage()">
+                                <span>➤</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROFILE SCREEN -->
+        <div id="profile-screen" class="screen">
+            <div class="screen-container">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('home-dashboard')">←</button>
+                    <h2>Profile</h2>
+                    <button class="icon-btn" onclick="toggleTheme()">🌙</button>
+                </div>
+                
+                <div class="profile-header">
+                    <div class="profile-avatar-large">AK</div>
+                    <h2 class="profile-name">Ahmed Khan</h2>
+                    <p class="profile-email">ahmed.khan@email.com</p>
+                    <div class="profile-level">
+                        <span class="level-badge">Level 12</span>
+                    </div>
+                </div>
+                
+                <div class="profile-stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">42,500</div>
+                        <div class="stat-label">Total Hasanat</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">2,340</div>
+                        <div class="stat-label">Pages Read</div>
+                    </div>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="menu-item" onclick="showScreen('analytics-screen')">
+                        <span class="menu-icon">📊</span>
+                        <span class="menu-label">Statistics</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item" onclick="showScreen('achievements-screen')">
+                        <span class="menu-icon">🏆</span>
+                        <span class="menu-label">Achievements</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">⚙️</span>
+                        <span class="menu-label">Settings</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🔔</span>
+                        <span class="menu-label">Notifications</span>
+                        <span class="menu-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div id="home-dashboard" class="screen">
+            <div class="dashboard-header">
+                <div class="home-hero">
+                    <div class="hero-left">
+                        <div class="avatar-sm">👤</div>
+                        <div>
+                            <div class="greeting">Assalamu Alaikum, <strong>Ahmed</strong></div>
+                            <div class="motivational-text">May Allah bless your journey of knowledge</div>
+                        </div>
+                    </div>
+                    <div class="hasanat-card">
+                        <div class="hasanat-label">Hasanat Today</div>
+                        <div class="hasanat-number-large">+<span id="hasanat-today">0</span></div>
+                        <div class="hasanat-total">Total: <span id="hasanat-total-small">0</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-section">
+                <h3>Your Progress</h3>
+                <div class="progress-rings">
+                    <div class="ring-container">
+                        <div class="ring" id="daily-goal-ring">
+                            <div class="ring-inner">
+                                <span class="ring-text">75%</span>
+                            </div>
+                        </div>
+                        <p>Daily Goal</p>
+                    </div>
+                    <div class="ring-container">
+                        <div class="ring" id="streak-ring">
+                            <div class="ring-inner">
+                                <span class="ring-text">7</span>
+                            </div>
+                        </div>
+                        <p>Day Streak</p>
+                    </div>
+                    <div class="ring-container">
+                        <div class="ring" id="total-progress-ring">
+                            <div class="ring-inner">
+                                <span class="ring-text">42</span>
+                            </div>
+                        </div>
+                        <p>Surahs Read</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <div class="action-buttons">
+                    <button class="action-btn primary" data-screen="quran-index">
+                        <div class="action-icon">📖</div>
+                        <div class="action-text">Start Reading</div>
+                    </button>
+                    <button class="action-btn secondary" data-screen="focus-setup">
+                        <div class="action-icon">🎯</div>
+                        <div class="action-text">Focus Mode</div>
+                    </button>
+                    <button class="action-btn secondary" data-screen="messages-screen">
+                        <div class="action-icon">💬</div>
+                        <div class="action-text">Messages</div>
+                    </button>
+                    <button class="action-btn secondary" data-screen="groups-screen">
+                        <div class="action-icon">👥</div>
+                        <div class="action-text">Groups</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Friday Kahf banner -->
+            <div id="friday-banner" class="friday-banner hidden">
+                <p>It's Friday — recite Surah Al-Kahf today for blessings.</p>
+                <button class="btn-primary" data-screen="reader-view" data-surah="18">Open Al-Kahf</button>
+            </div>
+            
+            <div class="recent-activity">
+                <h3>Recent Activity</h3>
+                <div class="activity-feed">
+                    <div class="activity-item">
+                        <div class="activity-icon">📚</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Completed Surah Al-Fatihah</div>
+                            <div class="activity-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">🏆</div>
+                        <div class="activity-content">
+                            <div class="activity-title">7-Day Streak Achieved!</div>
+                            <div class="activity-time">1 day ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">👥</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Joined "Morning Readers" Group</div>
+                            <div class="activity-time">2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Daily Deen Feed -->
+        <div id="daily-deen-feed" class="screen">
+            <h2>Daily Deen Feed</h2>
+            <div class="feed-container">
+                <div class="feed-item">
+                    <div class="user-info">Ahmed</div>
+                    <p>Completed my 7-day streak! Alhamdulillah</p>
+                    <div class="reactions">
+                        <button class="reaction-btn">🤲 5</button>
+                        <button class="reaction-btn">🙏 3</button>
+                    </div>
+                </div>
+                <!-- More feed items -->
+            </div>
+        </div>
+        
+        <!-- Quran Index -->
+        <div id="quran-index" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" data-screen="home-dashboard">← Back</button>
+                <h2>Qur'an</h2>
+            </div>
+            <div class="mode-selection">
+                <button class="btn-primary" data-action="start-normal-reading">Normal Reading</button>
+                <button class="btn-secondary" data-screen="focus-setup">Focus Mode</button>
+            </div>
+            <div class="surah-list">
+                <div class="surah-item" data-surah="1">
+                    <span>Al-Fatihah</span>
+                    <span>7 verses</span>
+                </div>
+                <!-- Add more surahs -->
+            </div>
+        </div>
+        
+        <!-- Reader View -->
+        <div id="reader-view" class="screen">
+            <div class="reader-header">
+                <button data-screen="quran-index">← Back</button>
+                <span id="current-surah">Al-Fatihah</span>
+                <span id="current-verse-num" style="margin-left:12px;color:#ccc;font-size:0.9rem;"></span>
+                <input type="hidden" id="reader-surah-id" value="">
+                <div class="hasanat-live">+10</div>
+            </div>
+            <div class="quran-controls">
+                <label for="reciter-select">Reciter:</label>
+                <select id="reciter-select"></select>
+                <button id="play-reciter" class="btn-secondary">Play</button>
+                <button id="mark-recited" data-action="mark-recited" class="btn-primary">Mark as Recited</button>
+                <span id="recited-hasanat" style="margin-left:12px;color:#ffb347;"></span>
+            </div>
+            <div class="quran-text" id="quran-text">
+                <!-- Quran text will be loaded here -->
+            </div>
+            <div class="reader-controls">
+                <button id="prev-page" data-action="prev-verse">Previous</button>
+                <button id="next-page" data-action="next-verse">Next</button>
+            </div>
+        </div>
+        
+        <!-- Focus Setup -->
+        <div id="focus-setup" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" data-screen="quran-index">← Back</button>
+                <h2>Deep Deen Focus Mode</h2>
+            </div>
+            <div class="focus-options">
+                <label>Duration:</label>
+                <select id="focus-duration">
+                    <option value="5">5 minutes</option>
+                    <option value="15">15 minutes</option>
+                    <option value="30">30 minutes</option>
+                </select>
+                <label>Surah:</label>
+                <select id="focus-surah">
+                    <option value="1">Al-Fatihah</option>
+                    <option value="36">Yasin</option>
+                    <option value="67">Al-Mulk</option>
+                </select>
+                <button class="btn-primary" data-action="start-focus-session">Start Focus Session</button>
+            </div>
+        </div>
+        
+        <!-- Active Focus Session -->
+        <div id="focus-session" class="screen">
+            <div class="focus-header">
+                <span id="session-timer">15:00</span>
+                <div class="hasanat-session">Hasanat: <span id="session-hasanat">0</span></div>
+            </div>
+            <div class="egg-container">
+                <div class="egg" id="progress-egg"></div>
+            </div>
+            <div class="quran-text-focus" id="focus-text">
+                <!-- Focus text -->
+            </div>
+            <div class="reader-controls">
+                <button id="prev-verse-focus" class="btn-secondary">Previous Verse</button>
+                <button id="next-verse-focus" class="btn-secondary">Next Verse</button>
+            </div>
+            <button class="btn-primary" data-action="end-focus-session">Complete Session</button>
+        </div>
+        
+        <!-- Progress Dashboard -->
+        <div id="progress-dashboard" class="screen">
+            <h2>Your Progress</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">42,500</span>
+                    <span>Total Hasanat</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <span>Days Streak</span>
+                </div>
+            </div>
+            <div class="weekly-report">
+                <h3>This Week</h3>
+                <p>125 minutes read, 2,500 Hasanat earned</p>
+            </div>
+        </div>
+        
+        <!-- Profile Screen -->
+        <div id="profile-screen" class="screen">
+            <div class="profile-header">
+                <div class="avatar">
+                    <img id="profile-avatar" src="https://placehold.co/80x80/333/fff?text=You" alt="avatar">
+                    <div class="avatar-actions">
+                        <input type="file" id="avatar-upload" accept="image/*" style="display:none">
+                        <button class="btn-secondary" id="change-avatar">Change</button>
+                        <button class="btn-secondary" id="choose-avatar">Choose Avatar</button>
+                    </div>
+                </div>
+                <div class="profile-meta">
+                    <h2 id="profile-name">Ahmed</h2>
+                    <p id="profile-hasanat">Hasanat: 42,500 • Streak: 15d</p>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="btn-secondary" data-screen="dhikr-counter">Dhikr Counter</button>
+                <button class="btn-secondary" data-screen="prayer-calendar">Prayer Times</button>
+                <button class="btn-secondary" data-screen="analytics-screen">Analytics</button>
+                <button class="btn-secondary" data-screen="achievements-screen">Achievements</button>
+                <button class="btn-secondary" data-screen="competitions-screen">Competitions</button>
+                <button class="btn-secondary" data-screen="groups-screen">Groups</button>
+                <button class="btn-secondary" data-screen="calendar-screen">Calendar</button>
+                
+                <button class="btn-secondary" data-screen="settings-screen">Settings</button>
+            </div>
+        </div>
+        
+        <!-- Dhikr Counter -->
+        <div id="dhikr-counter" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home-dashboard')">← Back</button>
+                <h2>Dhikr</h2>
+            </div>
+            <div class="dhikr-total">
+                <div class="dhikr-big-counter">
+                    <button class="dhikr-minus" onclick="decrementDhikr()">-</button>
+                    <span id="dhikr-total-count">0</span>
+                    <button class="dhikr-plus" onclick="incrementDhikr()">+</button>
+                </div>
+                <p>Total Dhikr</p>
+            </div>
+        </div>
+        
+        <!-- Prayer Calendar -->
+        <div id="prayer-calendar" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home-dashboard')">← Back</button>
+                <h2>Prayer Times</h2>
+            </div>
+            <div class="prayer-times">
+                <!-- Prayer times loaded dynamically -->
+            </div>
+        </div>
+        
+        <!-- Groups Screen -->
+        <div id="groups-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" data-screen="home-dashboard">← Back</button>
+                <h2>My Groups</h2>
+            </div>
+            <button class="btn-primary" data-screen="create-group">Create Group</button>
+            <div class="groups-list">
+                <div class="group-item">
+                    <h3>Young Muslims Study Circle</h3>
+                    <p>12 members • 3 active today</p>
+                    <button class="btn-secondary">View Group</button>
+                </div>
+                <div class="group-item">
+                    <h3>Ramadan Challenge 2026</h3>
+                    <p>25 members • 8 active today</p>
+                    <button class="btn-secondary">View Group</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Create Group Screen -->
+        <div id="create-group" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('groups-screen')">← Back</button>
+                <h2>Create New Group</h2>
+            </div>
+            <form class="group-form">
+                <input type="text" placeholder="Group Name" required>
+                <textarea placeholder="Group Description" rows="3"></textarea>
+                <label>
+                    <input type="checkbox" id="is-private"> Private Group
+                </label>
+                <button class="btn-primary" type="submit">Create Group</button>
+            </form>
+        </div>
+        
+        <!-- Competitions Screen -->
+        <div id="competitions-screen" class="screen">
+            <h2>Competitions</h2>
+            <button class="btn-primary" onclick="showScreen('create-competition')">Create Competition</button>
+            <div class="competitions-list">
+                <div class="competition-item">
+                    <h3>30-Day Quran Challenge</h3>
+                    <p>Jan 1 - Jan 30, 2026</p>
+                    <p>45 participants</p>
+                    <div class="competition-progress">
+                        <div class="progress-bar" style="width: 65%"></div>
+                    </div>
+                    <button class="btn-secondary">Join</button>
+                </div>
+                <div class="competition-item">
+                    <h3>Surah Yasin Memorization</h3>
+                    <p>Feb 1 - Feb 15, 2026</p>
+                    <p>18 participants</p>
+                    <div class="competition-progress">
+                        <div class="progress-bar" style="width: 30%"></div>
+                    </div>
+                    <button class="btn-secondary">View</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Create Competition Screen -->
+        <div id="create-competition" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('competitions-screen')">← Back</button>
+                <h2>Create Competition</h2>
+            </div>
+            <form class="competition-form">
+                <input type="text" placeholder="Competition Name" required>
+                <textarea placeholder="Description" rows="3"></textarea>
+                <div class="form-row">
+                    <label>Start Date: <input type="date" required></label>
+                    <label>End Date: <input type="date" required></label>
+                </div>
+                <select required>
+                    <option value="">Select Type</option>
+                    <option value="reading">Reading Pages</option>
+                    <option value="memorization">Memorization</option>
+                    <option value="streak">Daily Streak</option>
+                </select>
+                <button class="btn-primary" type="submit">Create Competition</button>
+            </form>
+        </div>
+        
+        <!-- Analytics Dashboard -->
+        <div id="analytics-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home-dashboard')">←</button>
+                <h2>Analytics</h2>
+            </div>
+            
+            <div class="screen-container">
+                <!-- Summary Section -->
+                <div class="analytics-summary">
+                    <div class="analytics-main-stat">
+                        <div class="analytics-big-number">42,500</div>
+                        <div class="analytics-big-label">Total Hasanat Earned</div>
+                    </div>
+                    
+                    <div class="analytics-stats-grid">
+                        <div class="analytics-stat-box">
+                            <div class="analytics-stat-value">15</div>
+                            <div class="analytics-stat-label">Day Streak</div>
+                        </div>
+                        
+                        <div class="analytics-stat-box">
+                            <div class="analytics-stat-value">245</div>
+                            <div class="analytics-stat-label">Minutes This Week</div>
+                        </div>
+                        
+                        <div class="analytics-stat-box">
+                            <div class="analytics-stat-value">2,340</div>
+                            <div class="analytics-stat-label">Total Pages</div>
+                        </div>
+                        
+                        <div class="analytics-stat-box">
+                            <div class="analytics-stat-value">12</div>
+                            <div class="analytics-stat-label">Surahs Completed</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chart Section -->
+                <div class="analytics-chart-section">
+                    <h3 class="analytics-chart-title">This Week's Activity</h3>
+                    
+                    <div class="analytics-chart-container">
+                        <div class="chart-bars-container">
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar-fill" style="height: 60%;"></div>
+                                <div class="chart-day-label">Mon</div>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar-fill" style="height: 80%;"></div>
+                                <div class="chart-day-label">Tue</div>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar-fill" style="height: 45%;"></div>
+                                <div class="chart-day-label">Wed</div>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar-fill" style="height: 90%;"></div>
+                                <div class="chart-day-label">Thu</div>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar-fill" style="height: 75%;"></div>
+                                <div class="chart-day-label">Fri</div>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar-fill" style="height: 100%;"></div>
+                                <div class="chart-day-label">Sat</div>
+                            </div>
+                            <div class="chart-bar-wrapper">
+                                <div class="chart-bar-fill" style="height: 85%;"></div>
+                                <div class="chart-day-label">Sun</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div></div>
+        
+        <!-- Achievements Screen -->
+        <div id="achievements-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home-dashboard')">← Back</button>
+                <h2>Achievements</h2>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">🌅</div>
+                    <h4>First Fajr</h4>
+                    <p>Read Quran before Fajr prayer</p>
+                </div>
+                <div class="achievement-card unlocked">
+                    <div class="achievement-icon">🔥</div>
+                    <h4>7-Day Streak</h4>
+                    <p>Read for 7 consecutive days</p>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">📖</div>
+                    <h4>Complete Juz 1</h4>
+                    <p>Read the entire first Juz</p>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🤲</div>
+                    <h4>10,000 Hasanat</h4>
+                    <p>Earn 10,000 Hasanat points</p>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">👥</div>
+                    <h4>Group Leader</h4>
+                    <p>Lead a study group for a month</p>
+                </div>
+                <div class="achievement-card locked">
+                    <div class="achievement-icon">🏆</div>
+                    <h4>Competition Winner</h4>
+                    <p>Win a Quran reading competition</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Settings Screen -->
+        <div id="settings-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home-dashboard')">← Back</button>
+                <h2>Settings</h2>
+            </div>
+            <div class="settings-section">
+                <h3>Notifications</h3>
+                <label class="setting-item">
+                    <input type="checkbox" checked> Daily Reading Reminders
+                    <select>
+                        <option>6:00 AM</option>
+                        <option>7:00 AM</option>
+                        <option>8:00 AM</option>
+                    </select>
+                </label>
+                <label class="setting-item">
+                    <input type="checkbox" checked> Group Activity Notifications
+                </label>
+                <label class="setting-item">
+                    <input type="checkbox"> Competition Updates
+                </label>
+            </div>
+            <div class="settings-section">
+                <h3>Reading Preferences</h3>
+                <label class="setting-item">
+                    <input type="checkbox"> Show Translation
+                </label>
+                <label class="setting-item">
+                    <input type="checkbox" checked> Enable Audio
+                </label>
+                <label class="setting-item">
+                    Font Size:
+                    <select>
+                        <option>Small</option>
+                        <option selected>Medium</option>
+                        <option>Large</option>
+                    </select>
+                </label>
+            </div>
+            <div class="settings-section">
+                <h3>Privacy</h3>
+                <label class="setting-item">
+                    <input type="checkbox"> Share Progress Publicly
+                </label>
+                <label class="setting-item">
+                    <input type="checkbox" checked> Allow Group Invites
+                </label>
+            </div>
+            <div class="settings-section">
+                <h3>Appearance</h3>
+                <label class="setting-item">
+                    Theme:
+                    <select id="settings-theme-select">
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </label>
+            </div>
+            <button class="btn-secondary" style="margin-top: 2rem;">Sign Out</button>
+        </div>
+        
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard-screen" class="screen">
+            <h2>Leaderboard</h2>
+            <div class="leaderboard-tabs">
+                <button class="tab-btn active" data-tab="global">Global</button>
+                <button class="tab-btn" data-tab="friends">Friends</button>
+                <button class="tab-btn" data-tab="groups">Groups</button>
+            </div>
+            <div class="leaderboard-content">
+                <div class="leaderboard-item top-three">
+                    <div class="rank rank-2">🥈</div>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">Fatima</div>
+                        <div class="user-score">15,420 Hasanat</div>
+                    </div>
+                </div>
+                <div class="leaderboard-item top-three">
+                    <div class="rank rank-1">🥇</div>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">Ahmed</div>
+                        <div class="user-score">18,750 Hasanat</div>
+                    </div>
+                </div>
+                <div class="leaderboard-item top-three">
+                    <div class="rank rank-3">🥉</div>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">Omar</div>
+                        <div class="user-score">12,890 Hasanat</div>
+                    </div>
+                </div>
+                <div class="leaderboard-item">
+                    <div class="rank">4</div>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">Aisha</div>
+                        <div class="user-score">11,250 Hasanat</div>
+                    </div>
+                </div>
+                <div class="leaderboard-item">
+                    <div class="rank">5</div>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">Ibrahim</div>
+                        <div class="user-score">9,780 Hasanat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Group Detail Screen -->
+        <div id="group-detail-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" data-screen="groups-screen">← Back</button>
+                <h2>Young Muslims Study Circle</h2>
+            </div>
+            <div class="group-stats">
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Active Today</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">45</div>
+                    <div class="stat-label">Total Sessions</div>
+                </div>
+            </div>
+            <div class="group-members">
+                <h3>Members</h3>
+                <div class="member-list">
+                    <div class="member-item">
+                        <div class="member-avatar">👤</div>
+                        <div class="member-info">
+                            <div class="member-name">Ahmed (You)</div>
+                            <div class="member-status">Active • 15 day streak</div>
+                        </div>
+                    </div>
+                    <div class="member-item">
+                        <div class="member-avatar">👤</div>
+                        <div class="member-info">
+                            <div class="member-name">Fatima</div>
+                            <div class="member-status">Active • 12 day streak</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="group-chat">
+                <h3>Recent Activity</h3>
+                <div class="chat-messages">
+                    <div class="chat-message">
+                        <div class="message-user">Fatima</div>
+                        <div class="message-text">Completed Surah Al-Baqarah today! Alhamdulillah 🤲</div>
+                        <div class="message-time">2 hours ago</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="message-user">Ahmed</div>
+                        <div class="message-text">Great job everyone! Let's keep the momentum going</div>
+                        <div class="message-time">1 hour ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Competition Detail Screen -->
+        <div id="competition-detail-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" data-screen="competitions-screen">← Back</button>
+                <h2>30-Day Quran Challenge</h2>
+            </div>
+            <div class="competition-header">
+                <div class="competition-info">
+                    <p>Jan 1 - Jan 30, 2026</p>
+                    <p>45 participants</p>
+                </div>
+                <div class="competition-progress">
+                    <div class="progress-bar" style="width: 65%"></div>
+                    <div class="progress-text">20 of 30 days completed</div>
+                </div>
+            </div>
+            <div class="competition-leaderboard">
+                <h3>Top Participants</h3>
+                <div class="leaderboard-item">
+                    <div class="rank rank-1">🥇</div>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">Ahmed</div>
+                        <div class="user-score">28 days • 8,450 Hasanat</div>
+                    </div>
+                </div>
+                <div class="leaderboard-item">
+                    <div class="rank rank-2">🥈</div>
+                    <div class="user-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name">Fatima</div>
+                        <div class="user-score">26 days • 7,890 Hasanat</div>
+                    </div>
+                </div>
+            </div>
+            <div class="competition-rules">
+                <h3>Rules</h3>
+                <ul>
+                    <li>Read at least 1 page per day</li>
+                    <li>Maintain daily streaks</li>
+                    <li>Share progress in group chat</li>
+                    <li>Winner gets special badge</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Islamic Calendar Screen -->
+        <div id="calendar-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home-dashboard')">← Back</button>
+                <h2>Islamic Calendar</h2>
+            </div>
+            <div class="calendar-header">
+                <div class="hijri-date">
+                    <div class="hijri-month">Rabi' al-awwal</div>
+                    <div class="hijri-year">1448 AH</div>
+                </div>
+                <div class="gregorian-date">
+                    <div class="gregorian-month">January</div>
+                    <div class="gregorian-year">2026</div>
+                </div>
+            </div>
+            <div class="calendar-grid">
+                <div class="calendar-day today">
+                    <div class="day-number">2</div>
+                    <div class="day-name">Thursday</div>
+                    <div class="islamic-events">
+                        <div class="event">🌙 New Moon</div>
+                    </div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">3</div>
+                    <div class="day-name">Friday</div>
+                </div>
+                <div class="calendar-day">
+                    <div class="day-number">4</div>
+                    <div class="day-name">Saturday</div>
+                </div>
+            </div>
+            <div class="upcoming-events">
+                <h3>Upcoming Islamic Events</h3>
+                <div class="event-item">
+                    <div class="event-date">Jan 15, 2026</div>
+                    <div class="event-name">Isra and Mi'raj</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">Mar 1, 2026</div>
+                    <div class="event-name">Ramadan Begins</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notifications Screen -->
+        <div id="notifications-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('home-dashboard')">← Back</button>
+                <h2>Notifications</h2>
+            </div>
+            <div class="notification-list">
+                <div class="notification-item unread">
+                    <div class="notification-icon">📖</div>
+                    <div class="notification-content">
+                        <div class="notification-title">Daily Reading Reminder</div>
+                        <div class="notification-text">Don't forget to read your daily Quran portion</div>
+                        <div class="notification-time">2 hours ago</div>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">👥</div>
+                    <div class="notification-content">
+                        <div class="notification-title">Group Activity</div>
+                        <div class="notification-text">Fatima completed her reading goal!</div>
+                        <div class="notification-time">5 hours ago</div>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">🏆</div>
+                    <div class="notification-content">
+                        <div class="notification-title">Achievement Unlocked!</div>
+                        <div class="notification-text">Congratulations! You earned the "7-Day Streak" badge</div>
+                        <div class="notification-time">1 day ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Messages Screen -->
+        <div id="messages-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" data-screen="home-dashboard">← Back</button>
+                <h2>Messages</h2>
+            </div>
+            <div class="messages-container">
+                <div class="conversations-list">
+                    <div class="conversation-item active">
+                        <div class="user-avatar">👤</div>
+                        <div class="conversation-info">
+                            <div class="user-name">Fatima Ahmed</div>
+                            <div class="last-message">Assalamu Alaikum! How's your Quran reading going?</div>
+                            <div class="message-time">2 min ago</div>
+                        </div>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="user-avatar">👤</div>
+                        <div class="conversation-info">
+                            <div class="user-name">Omar Hassan</div>
+                            <div class="last-message">MashaAllah, great progress this week!</div>
+                            <div class="message-time">1 hour ago</div>
+                        </div>
+                    </div>
+                    <div class="conversation-item">
+                        <div class="user-avatar">👤</div>
+                        <div class="conversation-info">
+                            <div class="user-name">Aisha Khan</div>
+                            <div class="last-message">Let's start a new reading challenge together</div>
+                            <div class="message-time">3 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-area">
+                    <div class="chat-header">
+                        <h3>Fatima Ahmed</h3>
+                        <span class="online-status">Online</span>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message received">
+                            <div class="message-content">Assalamu Alaikum! How's your Quran reading going?</div>
+                            <div class="message-time">2:30 PM</div>
+                        </div>
+                        <div class="message sent">
+                            <div class="message-content">Wa Alaikum Assalam! Alhamdulillah, I'm on Surah Al-Imran now. How about you?</div>
+                            <div class="message-time">2:32 PM</div>
+                        </div>
+                        <div class="message received">
+                            <div class="message-content">MashaAllah! I'm still working on Al-Baqarah. Let's keep each other motivated!</div>
+                            <div class="message-time">2:35 PM</div>
+                        </div>
+                    </div>
+                    <div class="message-input">
+                        <input type="text" placeholder="Type a message..." id="message-input">
+                        <button class="btn-primary" id="send-message">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation (visible on most screens) -->
+    
+                <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav" id="bottom-nav">
+            <button class="nav-item active" onclick="showScreen('home-dashboard')">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('quran-index')">
+                <span class="nav-icon">📖</span>
+                <span class="nav-label">Qur'an</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('groups-screen')">
+                <span class="nav-icon">👥</span>
+                <span class="nav-label">Groups</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('messages-screen')">
+                <span class="nav-icon">💬</span>
+                <span class="nav-label">Messages</span>
+            </button>
+            <button class="nav-item" onclick="showScreen('profile-screen')">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Profile</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="js/splash-fix.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app-original.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

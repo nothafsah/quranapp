@@ -1,0 +1,785 @@
+/* ==========================================
+   COMPLETE STYLING - ALL SCREENS
+   Based on PRD and UI/UX Blueprint
+   ========================================== */
+
+/* ==========================================
+   REMOVE STATUS BAR FROM HOME
+   ========================================== */
+
+.status-bar {
+    display: none !important;
+}
+
+/* ==========================================
+   BETTER ARABIC FONT
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+
+.verse-arabic,
+.quran-text,
+#focus-text,
+[class*="arabic"] {
+    font-family: 'Scheherazade New', 'Amiri', serif !important;
+    font-size: 2rem !important;
+    line-height: 2.8 !important;
+    font-weight: 400 !important;
+}
+
+/* ==========================================
+   ONBOARDING QUIZ SCREENS (PROPER 4-STEP)
+   ========================================== */
+
+.quiz-step {
+    display: none;
+}
+
+.quiz-step.active {
+    display: block;
+    animation: slideIn 0.4s ease-out;
+}
+
+.quiz-question {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-option {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.quiz-option:hover {
+    border-color: var(--primary);
+}
+
+.quiz-option.selected {
+    border-color: var(--primary);
+    background: var(--bg-elevated);
+}
+
+.quiz-option-radio {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.quiz-option.selected .quiz-option-radio {
+    border-color: var(--primary);
+    background: var(--primary);
+    position: relative;
+}
+
+.quiz-option.selected .quiz-option-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: var(--bg-dark);
+    border-radius: 50%;
+}
+
+.quiz-option-content {
+    flex: 1;
+}
+
+.quiz-option-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.quiz-option-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   ANALYTICS SCREEN (SEE ALL DESTINATION)
+   ========================================== */
+
+.analytics-header {
+    padding: 2rem 1.5rem;
+    background: linear-gradient(180deg, var(--bg-elevated), var(--bg-dark));
+    text-align: center;
+}
+
+.analytics-total {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.analytics-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.analytics-grid {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.analytics-stat-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.analytics-chart {
+    margin: 1.5rem;
+    padding: 2rem 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+}
+
+.chart-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 200px;
+    gap: 0.5rem;
+}
+
+.chart-bar {
+    flex: 1;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+    border-radius: 4px 4px 0 0;
+    min-height: 20px;
+    position: relative;
+}
+
+.chart-bar-label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* ==========================================
+   ACHIEVEMENTS SCREEN (STYLED)
+   ========================================== */
+
+.achievements-grid {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.achievement-card {
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.achievement-card.unlocked {
+    border-color: var(--primary);
+}
+
+.achievement-card.locked {
+    opacity: 0.5;
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.achievement-progress {
+    width: 100%;
+    height: 4px;
+    background: var(--bg-elevated);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.achievement-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.6s ease;
+}
+
+/* ==========================================
+   SETTINGS SCREEN (COMPLETE)
+   ========================================== */
+
+.settings-section {
+    padding: 0 1.5rem 1rem;
+}
+
+.settings-section-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 2rem 0 1rem;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.settings-item:active {
+    background: var(--bg-elevated);
+}
+
+.settings-item-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.settings-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.settings-item-info {
+    flex: 1;
+}
+
+.settings-item-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.settings-item-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.settings-toggle {
+    width: 50px;
+    height: 28px;
+    background: var(--bg-elevated);
+    border-radius: 14px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.settings-toggle.active {
+    background: var(--primary);
+}
+
+.settings-toggle-knob {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: var(--transition);
+}
+
+.settings-toggle.active .settings-toggle-knob {
+    left: 24px;
+}
+
+.settings-item-value {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   NOTIFICATIONS SCREEN (STYLED)
+   ========================================== */
+
+.notifications-list {
+    padding: 1rem 1.5rem 100px;
+}
+
+.notification-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.notification-item.unread {
+    border-left: 3px solid var(--primary);
+}
+
+.notification-item:active {
+    background: var(--bg-elevated);
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.notification-message {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.notification-time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   PRAYER TIMES & CALENDAR
+   ========================================== */
+
+.prayer-card {
+    margin: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.prayer-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.hijri-date {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.location {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.prayer-times-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.prayer-time-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--bg-dark);
+    border-radius: var(--radius-md);
+}
+
+.prayer-time-row.next {
+    background: linear-gradient(135deg, rgba(255, 179, 71, 0.1), rgba(108, 99, 255, 0.1));
+    border: 2px solid var(--primary);
+}
+
+.prayer-name-arabic {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.prayer-name-english {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.prayer-time-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ==========================================
+   FOCUS MODE (PROPER STYLING)
+   ========================================== */
+
+.focus-setup-container {
+    padding: 2rem 1.5rem 100px;
+}
+
+.focus-step {
+    margin-bottom: 3rem;
+}
+
+.focus-step-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.duration-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.duration-option {
+    padding: 2rem 1rem;
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.duration-option:active {
+    transform: scale(0.95);
+}
+
+.duration-option.selected {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(255, 179, 71, 0.1), rgba(108, 99, 255, 0.1));
+}
+
+.duration-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.duration-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.app-blocklist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.app-block-item {
+    padding: 1.5rem 1rem;
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.app-block-item.selected {
+    border-color: var(--danger);
+    background: rgba(255, 82, 82, 0.1);
+}
+
+.app-block-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-block-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.focus-session-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: calc(100vh - 140px);
+}
+
+.focus-timer {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+}
+
+.focus-egg {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    margin: 2rem 0;
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.focus-hasanat {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 2rem;
+}
+
+/* ==========================================
+   COMPETITIONS (COMPLETE)
+   ========================================== */
+
+.competitions-header {
+    padding: 1.5rem;
+    background: var(--bg-card);
+}
+
+.competitions-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.competition-tab {
+    flex: 1;
+    padding: 0.75rem;
+    background: var(--bg-elevated);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.competition-tab.active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--bg-dark);
+}
+
+.competition-card {
+    margin: 1rem 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.competition-card:active {
+    border-color: var(--primary);
+    transform: scale(0.98);
+}
+
+.competition-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.competition-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.competition-dates {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.competition-participants {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.competition-progress-info {
+    margin: 1.5rem 0;
+}
+
+.competition-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--bg-elevated);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.competition-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.6s ease;
+}
+
+.competition-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.your-rank {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-elevated);
+    border-radius: var(--radius-md);
+}
+
+.rank-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.rank-info {
+    flex: 1;
+}
+
+.rank-position {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.rank-hasanat-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   COMPACT LAYOUT FIX
+   ========================================== */
+
+@media (min-width: 769px) {
+    body {
+        background: #0a0a0a;
+    }
+    
+    #app {
+        max-width: 480px;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    }
+    
+    .bottom-nav {
+        max-width: 480px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .reader-controls {
+        max-width: 480px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
